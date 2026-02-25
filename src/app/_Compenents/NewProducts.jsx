@@ -28,15 +28,15 @@ async function NewProducts() {
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-4 gap-6 ">
         {data?.map((item) => (
-          <Link href={`/product/${item?.slug}`} className="shadow-md border border-gray-300 bg-gray-200 hover:opacity-80 transition-all duration-500 hover:border hover:border-blue-500 rounded-t-lg">
+          <Link href={`/product/${item?.slug}`} className="shadow-md border border-gray-300 bg-gray-100 hover:opacity-80 transition-all duration-500 hover:border hover:border-blue-500 rounded-t-lg">
             {/* ## IMAGE*/}
-            <div className=" ">
-              <Image src={item?.imageUrl} width={300} height={300}
-              className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
+            <div className="flex items-center justify-center ">
+              <Image src={item?.imageUrl} width={300} alt={item?.name} height={300}
+              className="w-[300px]  h-[300px] object-contain hover:scale-105 transition-all duration-500 py-3"
               />
             </div>
             {/* ## title & price */}
-            <div className="flex   justify-between items-center my-2 mx-6">
+            <div className="flex justify-between items-center my-2 mx-6">
                 <h3 className="font-bold text-gray-800">{item?.name}</h3>
                 <h4 className="text-sm font-bold text-blue-700">${item?.price} USD</h4>
             </div>

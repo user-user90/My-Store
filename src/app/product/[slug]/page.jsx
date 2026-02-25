@@ -1,5 +1,6 @@
 import { client } from "@/lib/sanity"
 import GaleryImage from "../_compenents/GaleryImage";
+import AddCart from "../_compenents/AddCart";
 
 const getData = async (slug)=>{
 const query = `*[_type == "product" && slug.current == $slug][0]{
@@ -31,16 +32,15 @@ async function ProductPage({params}) {
         <div>
             <div className="border-b border-gray-400 pb-2">
             {/* ## title */}
-            <h2 className="text-5xl text-gray-800 font-bold mb-1 mt-10 lg:mt-22">{data?.name}</h2>
+            <h2 className="text-3xl lg:text-5xl text-gray-800 font-bold mb-1 mt-10 lg:mt-22">{data?.name}</h2>
             {/* ## Price */}
             <span className=" text-2xl text-purple-800 font-extrabold">${data?.price}</span>
             </div>
             {/* ## description */}
             <p className="leading-relaxed text-gray-600 my-8">{data?.description}</p>
-            <div className="flex flex-col lg:flex-row gap-3">
+            <div className="">
             {/* ## add cart */}
-            <button className="bg-purple-800 w-full py-2 text-white font-bold active:scale-95 transition duration-200 rounded-md ">Add Cart</button>
-              <button className="bg-gray-300 w-full py-2 font-semibold text-gray-800 active:scale-95 transition duration-200 rounded-md ">chek now</button>
+            <AddCart product={data} />
             </div>
         </div>
         </div>

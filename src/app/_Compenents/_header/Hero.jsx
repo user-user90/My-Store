@@ -64,20 +64,20 @@ async function Hero() {
 <div className="flex flex-col lg:flex-row items-center gap-4 mt-8 lg:mt-0 ml-0 lg:ml-6">
   <div className="flex w-full md:w-auto overflow-hidden rounded-lg border border-gray-400 bg-white shadow-sm">
     <Link 
-      href="/" 
-      className="flex w-1/3 items-center justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 border-r border-gray-400"
+      href="/Men" 
+      className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 border-r border-gray-400"
     >
-      T-Shirt
+      Men
     </Link>
     <Link 
       href="/Women" 
-      className="flex w-1/3 items-center justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 border-r border-gray-400"
+      className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 border-r border-gray-400"
     >
       Women
     </Link>
     <Link 
       href="/Teens" 
-      className="flex w-1/3 items-center justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6"
+      className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6"
     >
       Teens
     </Link>
