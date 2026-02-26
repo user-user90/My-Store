@@ -20,8 +20,8 @@ async function Hero() {
         {/* ## TITLE && P */}
         <div className="mb-6 flex flex-col w-full   lg:w-2/4 mx-4 pt-10 lg:pt-30">
         {/* ## title */}
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-5  text-gray-800">
-            Top Fashion <span className="text-purple-700 text-4xl lg:text-6xl ml-0 lg:ml-4">for a top Price!</span>
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-5  text-gray-800">
+            Top Fashion <span className="text-purple-700 text-5xl lg:text-6xl ml-0 lg:ml-4">for a top Price!</span>
           </h1>
           {/* ## description */}
           <p className="max-w-md text-md md:text-lg text-gray-700 leading-relaxed ">
@@ -38,22 +38,22 @@ async function Hero() {
           <div className="relative top-12 left-12 -ml-12 z-10">
             <Image
               src={data?.imgUrl1}
-              width={400}
-              height={400}
+              width={500}
+              height={500}
               priority
               alt="Fashion 1"
-              className="rounded-lg object-cover "
+              className="rounded-lg object-contain object-center"
             />
           </div>
           {/* ## image 2 */}
           <div>
             <Image
               src={data?.imgUrl2}
-              width={400}
-              height={400}
+              width={500}
+              height={500}
               priority
               alt="Fashion 2"
-              className="rounded-lg object-cover"
+              className="rounded-lg object-contain object-center"
             />
           </div>
         </div>

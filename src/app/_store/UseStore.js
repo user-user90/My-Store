@@ -15,6 +15,10 @@ export const useStore = create(
       removeFromCart: (id) => set((state) => ({
         cart: state.cart.filter((item) => item._id !== id)
       })),
+       // ## SEARCH PRODUCT
+     searchProduct:"",
+    searchProductItem:(search)=>set({searchProduct:search}),
+
       // إفراغ السلة
       clearCart: () => set({ cart: [] }),
     }),

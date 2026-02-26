@@ -19,13 +19,13 @@ function CartPage({ closeCart }) {
       {/* Scrollable area for products */}
       <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
         {cart?.length > 0 ? (
-          <div className="space-y-6">
+          <div className="space-y-3">
             {cart?.map((item) => (
-              <div key={item._id} className="flex items-center justify-between border-b border-gray-100 pb-4 group">
+              <div key={item._id} className="flex items-center justify-between border-b border-gray-100 pb-2 group">
                 <Link
                   onClick={() => closeCart(false)}
                   href={`/product/${item?.slug}`} 
-                  className="flex items-center gap-4 flex-1"
+                  className="flex items-center gap-2 flex-1"
                 >
                   {/* --- Image Section --- */}
                   <div className="relative w-20 h-24 bg-gray-100 rounded-lg overflow-hidden shrink-0">

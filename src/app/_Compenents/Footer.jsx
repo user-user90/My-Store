@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 
 const links = [
@@ -7,6 +8,9 @@ const links = [
 ]
 
 function Footer() {
+  const scrolT=()=>{
+   window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   return (
     <footer className="bg-gray-100 mt-32 border-t border-gray-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-16 py-8">
@@ -19,8 +23,8 @@ function Footer() {
 
           {/* Links Section */}
           <ul className="flex flex-wrap justify-center gap-6 lg:gap-8">
-            <li>
-              <Link href="/" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition duration-300">
+            <li onClick={scrolT}>
+              <Link  href="/" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition duration-300">
                 Home
               </Link>
             </li>
