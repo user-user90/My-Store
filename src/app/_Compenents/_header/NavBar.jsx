@@ -66,11 +66,15 @@ function NavBar() {
 
         {/* Icons Area */}
         <div className="flex items-center gap-3">
-          <button onClick={() => setShowSearch(true)} className="text-2xl font-bold p-2 hover:bg-gray-100 rounded-full transition cursor-pointer">
+          <button
+          aria-label="search product"
+          onClick={() => setShowSearch(true)} className="text-2xl font-bold p-2 hover:bg-gray-100 rounded-full transition cursor-pointer">
             <IoSearchOutline />
           </button>
 
-          <button onClick={() => setShowCart(true)} className="relative p-2 hover:bg-gray-100 rounded-full transition cursor-pointer">
+          <button 
+          aria-label="open cart"
+          onClick={() => setShowCart(true)} className="relative p-2 hover:bg-gray-100 rounded-full transition cursor-pointer">
             <RiShoppingBagLine className="text-2xl" />
             <span className="absolute top-0 right-0 w-5 h-5 flex items-center justify-center text-[10px] font-bold text-white bg-blue-800 rounded-full translate-x-1 -translate-y-1">
               {mounted ? cart.length : 0}
@@ -78,6 +82,7 @@ function NavBar() {
           </button>
 
           <button 
+          aria-label="open menu"
             className={`md:hidden text-3xl transition-all ${showCart ? "z-[40]" : "z-[150]"}`} 
             onClick={() => setOpen(!open)}
           >
