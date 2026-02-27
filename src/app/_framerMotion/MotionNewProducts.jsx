@@ -63,13 +63,15 @@ function MotionNewProducts({ data }) {
           transition={{ duration: 0.5 ,delay:0.8}}
                 className="relative flex items-center justify-center bg-gray-100 overflow-hidden">
                   <Image
-                    src={item?.imageUrl}
-                    width={300}
-                    alt={item?.name}
-                    height={300}
-                    
-                    className="w-[300px] h-[300px] object-contain group-hover:scale-110 transition-transform duration-500 py-4"
-                  />
+  src={item?.imageUrl}
+  width={300}
+  height={300}
+  alt={item?.name || "Product image"}
+ 
+  // إضافة الـ style هنا يحل مشكلة التحذير ويحافظ على تناسق الأبعاد
+  style={{ width: '100%', height: '300px' }} 
+  className="w-[300px] h-[300px] object-contain group-hover:scale-110 transition-transform duration-500 py-4"
+/>
                 </motion.div >
                 
                 {/* {INFO CONTAINER} */}

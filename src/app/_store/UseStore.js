@@ -17,6 +17,9 @@ const useStore = create(
       addOrder: (newOrder) => set((state) => ({
         orders: [newOrder, ...state.orders]
       })),
+        // ## SEARCH PRODUCT
+    searchProduct:"",
+    searchProductItem:(search)=>set({searchProduct:search}),
 
       // --- الدالة الهامة لتفريغ السلة ---
       clearCart: () => set({ cart: [] }), 

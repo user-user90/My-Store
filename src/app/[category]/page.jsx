@@ -50,14 +50,16 @@ async function CategoryPage({ params }) {
                     {data?.map((item) => (
                         <div key={item._id} className="group relative">
                             {/* Image Wrapper */}
-                            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:shadow-blue-50">
+                            <div className="relative flex items-center justify-center aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:shadow-blue-50">
                                 <Image 
                                     src={item.imageUrl} 
                                     alt={item.name}
-                                    fill
+                                      width={300}
+        height={200}
                                     priority
-
-                                    className="object-contain transition-transform duration-700 ease-in-out group-hover:scale-110"
+                                   
+                                   style={{ objectFit: 'cover', height: 'auto', }}
+                                    className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                                 />
                                 {/* Quick View Button Overlay */}
                                 <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
