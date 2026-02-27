@@ -57,7 +57,7 @@ function CartPage({ closeCart }) {
   if (!cart) return null;
 
   return (
-    <div className="flex flex-col h-[calc(100vh-80px)]"> 
+    <div className="flex flex-col h-[85vh]"> 
       {/* ... باقي كود الـ HTML الخاص بك كما هو دون تغيير ... */}
       <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
         {cart?.length > 0 ? (
