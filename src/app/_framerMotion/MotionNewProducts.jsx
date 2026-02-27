@@ -58,16 +58,26 @@ function MotionNewProducts({ data }) {
                     className="relative flex items-center justify-center bg-gray-100 overflow-hidden"
                   >
                     <Image
-                      src={item?.imageUrl}
-                      width={400}
-                      height={400}
-                      alt={item?.name}
-                      // هذه الخاصية ستخبر Next.js أن يحمل صورة صغيرة جداً في الجريد
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      style={{ width: "100%", height: "auto" }}
-                      priority={index < 2} // فقط لأول صورتين لتسريع الصفحة
-                      className="aspect-square object-contain group-hover:scale-110 transition-transform duration-500 py-4"
-                    />
+  src={item?.imageUrl}
+  width={300} // تقليل العرض الأساسي لأن الصورة لا تحتاج 400px في الهاتف
+  height={300}
+  alt={item?.name || "Produit Vantix"}
+  
+  // التغيير السحري هنا:
+  // في الهاتف (max-width: 640px) الصورة تأخذ نصف الشاشة تقريباً (45vw)
+  // في التابلت (max-width: 1024px) الصورة تأخذ الثلث (30vw)
+  // في الحاسوب (أكبر من ذلك) تأخذ 250px ثابتة
+  sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 250px"
+  
+  // تعطيل Lazy Loading لأول منتجين (LCP)
+  priority={index < 2}
+  
+  // رفع أولوية الطلب في المتصفح
+  fetchPriority={index < 2 ? "high" : "auto"}
+  
+  style={{ width: "100%", height: "auto" }}
+  className="aspect-square object-contain group-hover:scale-110 transition-transform duration-500 py-4"
+/>
                   </motion.div>
 
                   {/* INFO CONTAINER */}
