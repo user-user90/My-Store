@@ -21,7 +21,7 @@ async function AllProducts() {
   const data = await getProduct()
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-gray-50 ">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-16">
         
         {/* --- Section Header --- */}
@@ -30,9 +30,10 @@ async function AllProducts() {
             <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
               Notre <span className="text-blue-700">Collection</span>
             </h1>
-            <p className="mt-3 text-lg text-gray-600 max-w-md">
+            {/* تم تغيير h1 الفرعي لـ h2 لتحسين الـ SEO وسهولة الوصول */}
+            <h2 className="mt-3 text-lg text-gray-600 max-w-md font-normal">
               Explorez notre gamme diversifiée de produits de haute qualité conçus pour votre style de vie.
-            </p>
+            </h2>
           </div>
           
           <div className="bg-gray-50 px-4 py-2 rounded-full border border-gray-200 w-fit">
@@ -42,23 +43,24 @@ async function AllProducts() {
 
         {/* --- Product Grid --- */}
         <div className="grid grid-cols-2 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {data.map((product) => (
+          {data.map((product, index) => (
             <article key={product._id} className="group relative flex flex-col">
               
               {/* Image Card */}
-              <div className="relative overflow-hidden rounded-xl bg-gray-100 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-blue-100 px-1 flex items-center justify-center">
+              <div className="relative overflow-hidden rounded-xl bg-gray-100 border border-gray-300 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-blue-100 px-1 flex items-center justify-center">
                 
-                {/* رابط الصورة: مخفي عن قارئ الشاشة لتجنب التكرار ومزود بـ tabIndex="-1" */}
+                {/* رابط الصورة: مخفي عن قارئ الشاشة لتجنب التكرار */}
                 <Link 
                   href={`/product/${product.slug}`} 
                   tabIndex="-1" 
                   aria-hidden="true"
                   className="w-full h-full"
                 >
-                  <ImageMotion product={product} />
+                  {/* تمرير الـ index للتحكم في أولوية التحميل */}
+                  <ImageMotion product={product} index={index} />
                 </Link>
 
-                {/* Hover Action Button: تم إضافة aria-label وصورته واضحة للمحركات */}
+                {/* Hover Action Button */}
                 <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none group-hover:pointer-events-auto">
                   <Link 
                     href={`/product/${product.slug}`}
@@ -78,7 +80,6 @@ async function AllProducts() {
                       {product.categoryName}
                     </p>
                     <div className="flex flex-col gap-1">
-                      {/* العنوان H3 منطقي تحت H1 الصفحة */}
                       <h3 className="text-lg font-bold text-gray-900 line-clamp-1">
                         <Link href={`/product/${product.slug}`} className="hover:text-blue-700 transition-colors">
                           {product?.name}
@@ -89,7 +90,6 @@ async function AllProducts() {
                   </div>
                 </div>
                 
-                {/* View Detail Link: تم تحسين مساحة الضغط (min-h-12) وإضافة اسم فريد */}
                 <Link 
                   href={`/product/${product.slug}`}
                   aria-label={`Afficher plus d'informations sur ${product.name}`}

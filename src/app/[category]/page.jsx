@@ -21,7 +21,7 @@ async function CategoryPage({ params }) {
     const data = await getData(category);
 
     return (
-        <section className=" bg-white">
+        <section className=" bg-gray-50">
             {/* --- Hero / Header Section  TOP--- */}
             <div className=" border-b border-gray-100 py-12 lg:py-8 transition-all">
                 <div className="mx-auto max-w-7xl px-8 lg:px-16">
@@ -50,7 +50,7 @@ async function CategoryPage({ params }) {
                     {data?.map((item) => (
                         <div key={item._id} className="group relative">
                             {/* Image Wrapper */}
-                            <div className="relative flex items-center justify-center aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:shadow-blue-50">
+                            <div className="relative flex items-center justify-center border border-gray-300 aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:shadow-blue-50">
                                 <Image 
                                     src={item.imageUrl} 
                                     alt={item.name}
@@ -84,9 +84,7 @@ async function CategoryPage({ params }) {
                                         {item.price} €
                                     </span>
                                 </div>
-                                <p className="text-xs font-semibold text-gray-400 uppercase tracking-tighter">
-                                    {item.categoryName}
-                                </p>
+                              
                             </div>
                         </div>
                     ))}
