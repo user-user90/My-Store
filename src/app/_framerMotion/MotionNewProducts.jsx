@@ -60,7 +60,7 @@ function MotionNewProducts({ data }) {
                    initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 ,delay:0.8}}
+          transition={{ duration: 0.5 ,delay:0.8}}
                 className="relative flex items-center justify-center bg-gray-100 overflow-hidden">
                   <Image
                     src={item?.imageUrl}
