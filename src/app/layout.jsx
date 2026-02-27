@@ -7,40 +7,52 @@ import { Toaster } from "react-hot-toast";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: 'swap', // يسرع ظهور النص فوراً
+  display: 'swap', 
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: 'swap', // يسرع ظهور النص فوراً
+  display: 'swap', 
 });
 
 export const metadata = {
   title: "Vantix | L'Élégance du Streetwear & Sneakers Premium",
-  description: "Découvrez Vantix, votre destination ultime pour les dernières tendances en sneakers et streetwear. Qualité premium, icônes intemporelles et style urbain redéfini.",
-  keywords: ["Sneakers", "Streetwear", "Mode", "Vantix", "Baskets", "Nike Air Force 1", "Windrunner"],
+  description: "Découvrez Vantix, votre destination ultime pour les dernières tendances en sneakers et streetwear.",
+  keywords: ["Sneakers", "Streetwear", "Mode", "Vantix", "Baskets", "Nike Air Force 1"],
   icons: {
     icon: "/teens3.jpeg", 
+  },
+  // إضافة تلميحات للمتصفح لتسريع جلب الصور من سانيتي
+  alternates: {
+    canonical: 'https://vantix-store.netlify.app',
+  },
+  other: {
+    'preconnect': 'https://cdn.sanity.io',
+    'dns-prefetch': 'https://cdn.sanity.io',
   }
 };
 
 export default function RootLayout({ children }) {
   return (
-    // تم تغيير اللغة للفرنسية لتحسين الـ SEO
-    <html lang="fr"> 
+    <html lang="fr">
+      {/* إضافة الـ Head يدوياً لتحسين الـ Preconnect بشكل أقوى */}
+      <head>
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="bg-[#FAFAFA] min-h-screen flex flex-col">
+        {/* تم حذف tag الـ main الزائد لتحسين الـ DOM Size وجعل الهيكلية أنظف */}
+        <div className="bg-[#FAFAFA] min-h-screen flex flex-col">
           <NavBar />
-          {/* تأكد أن محتوى الصفحة يأخذ المساحة المتبقية */}
-          <div className="flex-grow">
+          <main className="flex-grow">
             {children}
-          </div>
+          </main>
           <Toaster position="top-center" />
           <Footer />
-        </main>
+        </div>
       </body>
     </html>
   );
