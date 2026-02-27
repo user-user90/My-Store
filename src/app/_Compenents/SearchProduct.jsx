@@ -101,12 +101,12 @@ function SearchProducts({ closMenu }) {
                 </Link>
               ))
             ) : (
-              /* ## NO RESULTS EMPTY STATE */
-              <div className="col-span-full flex flex-col justify-center items-center text-gray-400 py-16">
-                <BsSearch size={40} className="mb-4 opacity-20" />
-                <h3 className="text-lg">    لم يتم العتور على بنوته الزوينه    </h3>
-                <p className="text-sm">Try searching for something else</p>
-              </div>
+             /* ## NO RESULTS EMPTY STATE */
+ <div className="col-span-full flex flex-col justify-center items-center text-gray-400 py-16">
+   <BsSearch size={40} className="mb-4 opacity-20" />
+   <h3 className="text-lg font-semibold text-gray-600">Aucun produit trouvé</h3>
+   <p className="text-sm">Essayez de rechercher un autre article</p>
+ </div>
             )}
           </div>
         </div>

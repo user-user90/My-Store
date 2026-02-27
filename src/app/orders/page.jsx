@@ -143,6 +143,7 @@ function OrdersPage() {
 
             <div className="pt-4">
               <button
+              aria-label='Confirmer la Commande'
                 type="submit"
                 disabled={loading || cart.length === 0}
                 className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2 disabled:bg-gray-300  shadow-lg shadow-blue-100"

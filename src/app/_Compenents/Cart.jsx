@@ -102,11 +102,22 @@ function CartPage({ closeCart }) {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-full text-center space-y-4">
-             {/* حالة السلة الفارغة */}
-             <div className="text-5xl">🛒</div>
-             <p className="text-gray-500">Votre panier est vide !</p>
-          </div>
+        <div className="flex flex-col items-center justify-center h-full text-center space-y-6 py-10">
+  {/* حالة السلة الفارغة */}
+  <div className="text-6xl ">🛒</div>
+  
+  <div className="space-y-2">
+    <h3 className="text-xl font-bold text-gray-800">Votre panier est vide !</h3>
+  </div>
+
+  <Link 
+   onClick={() => closeCart(false)}
+    href={"/allproducts"}
+    className="inline-block bg-black text-white px-8 py-3 rounded-full font-semibold text-sm uppercase tracking-widest transition-all duration-300 hover:bg-gray-800 hover:shadow-lg active:scale-95"
+  >
+    Retour à la boutique
+  </Link>
+</div>
         )}
       </div>
 
@@ -118,6 +129,7 @@ function CartPage({ closeCart }) {
             <span className="text-xl font-extrabold">{totalPrice} €</span>
           </div>
           <button 
+          aria-label='Commander maintenant'
             onClick={handleCheckout}
             className="w-full bg-blue-700 text-white py-3 rounded-xl font-bold hover:bg-blue-800 transition-all shadow-md"
           >
