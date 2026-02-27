@@ -124,7 +124,9 @@ function NavBar() {
         <div className="flex flex-col h-full">
           <div className="p-5 border-b flex justify-between items-center bg-gray-50">
             <h2 className="text-xl font-bold">Panier</h2>
-            <button onClick={() => setShowCart(false)} className="p-2 hover:bg-gray-200 rounded-full transition">
+            <button
+            aria-label="Fermer le menu"
+             onClick={() => setShowCart(false)} className="p-2 hover:bg-gray-200 rounded-full transition">
               <RiCloseLine size={28} />
             </button>
           </div>

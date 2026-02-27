@@ -5,18 +5,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 function MotionNewProducts({ data }) {
-  // إعدادات حركة الظهور التدريجي (Stagger) لإضفاء لمسة احترافية
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: { staggerChildren: 0.1 }
     }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
 
   return (
@@ -49,32 +43,34 @@ function MotionNewProducts({ data }) {
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
       >
         {data && data.length > 0 ? (
-          data.map((item,index) => (
-            <div key={index}>
+          data.map((item, index) => (
+            <div key={item._id || index}>
               <Link
                 href={`/product/${item?.slug}`}
                 className="group shadow-md border border-gray-300 bg-gray-100 hover:shadow-xl transition-all duration-500 hover:border-purple-500 rounded-t-lg block overflow-hidden"
               >
-                {/* {IMAGE CONTAINER} */}
+                {/* IMAGE CONTAINER */}
                 <motion.div
-                   initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 ,delay:0.5}}
-                className="relative flex items-center justify-center bg-gray-100 overflow-hidden">
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }} // تقليل التأخير لتحسين LCP
+                  className="relative flex items-center justify-center bg-gray-100 overflow-hidden"
+                >
                   <Image
-  src={item?.imageUrl}
-  width={300}
-  height={300}
-  alt={item?.name || "Product image"}
- 
-  // إضافة الـ style هنا يحل مشكلة التحذير ويحافظ على تناسق الأبعاد
-  style={{ width: '100%', height: '300px' }} 
-  className="w-[300px] h-[300px] object-contain group-hover:scale-110 transition-transform duration-500 py-4"
-/>
+                    src={item?.imageUrl}
+                    width={400} // زيادة العرض قليلاً لتفادي فقدان الجودة
+                    height={400}
+                    alt={item?.name || "Product image"}
+                    // حل مشكلة التحذير: height: 'auto'
+                    style={{ width: '100%', height: 'auto' }} 
+                    // تحسين LCP لأول 4 منتجات تظهر في الشاشة
+                    priority={index < 4} 
+                    className="aspect-square object-contain group-hover:scale-110 transition-transform duration-500 py-4"
+                  />
                 </motion.div >
                 
-                {/* {INFO CONTAINER} */}
+                {/* INFO CONTAINER */}
                 <div className="flex justify-between items-center py-4 px-6 bg-gray-100">
                   <h3 className="line-clamp-1 font-bold text-gray-800 group-hover:text-purple-700 transition-colors">
                     {item?.name}
@@ -90,9 +86,7 @@ function MotionNewProducts({ data }) {
           /* --- SKELETON LOADING --- */
           [1, 2, 3, 4].map((index) => (
             <div key={index} className="shadow-md border border-gray-200 bg-gray-100 rounded-t-lg animate-pulse">
-              {/* محاكاة الصورة */}
-              <div className="w-full h-[300px] bg-gray-200 rounded-t-lg"></div>
-              {/* محاكاة النصوص */}
+              <div className="w-full aspect-square bg-gray-200 rounded-t-lg"></div>
               <div className="flex justify-between items-center py-4 px-6">
                 <div className="h-4 bg-gray-300 rounded w-1/2"></div>
                 <div className="h-4 bg-gray-300 rounded w-1/4"></div>
