@@ -28,9 +28,9 @@ async function CategoryPage({ params }) {
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                         <div>
                             <nav className="flex mb-4 text-xs font-bold uppercase tracking-widest text-blue-600">
-                                <Link href="/" className="hover:opacity-70">Home</Link>
+                                <Link href="/" className="hover:opacity-70">Accueil</Link>
                                 <span className="mx-2 text-gray-300">/</span>
-                                <span className="text-gray-400">Category</span>
+                                <span className="text-gray-400">Catégorie</span>
                             </nav>
                             <h1 className="text-4xl lg:text-5xl font-black text-gray-900 capitalize">
                                 {category}<span className="text-blue-700">.</span>
@@ -38,7 +38,7 @@ async function CategoryPage({ params }) {
                         </div>
                         <div className="flex items-center gap-3 text-gray-500 font-medium">
                             <RiLayoutGridFill className="text-blue-700" size={20} />
-                            <span>Showing {data?.length} unique pieces</span>
+                            <span>Affichage de {data?.length} pièces uniques</span>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,9 @@ async function CategoryPage({ params }) {
                                     src={item.imageUrl} 
                                     alt={item.name}
                                     fill
-                                    className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+                                    priority
+
+                                    className="object-contain transition-transform duration-700 ease-in-out group-hover:scale-110"
                                 />
                                 {/* Quick View Button Overlay */}
                                 <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
@@ -63,7 +65,7 @@ async function CategoryPage({ params }) {
                                         href={`/product/${item.slug}`}
                                         className="w-full bg-white/90 backdrop-blur-md py-3 text-center rounded-xl text-sm font-bold text-gray-900 shadow-sm translate-y-2 group-hover:translate-y-0 transition-transform duration-300"
                                     >
-                                        View Details
+                                        Voir Détails
                                     </Link>
                                 </div>
                             </div>
@@ -77,7 +79,7 @@ async function CategoryPage({ params }) {
                                         </Link>
                                     </h3>
                                     <span className="text-md font-black text-blue-700">
-                                        ${item.price}
+                                        {item.price} €
                                     </span>
                                 </div>
                                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-tighter">
@@ -92,10 +94,10 @@ async function CategoryPage({ params }) {
                 {data?.length === 0 && (
                     <div className="text-center ">
                         <div className="text-6xl mb-4">📦</div>
-                        <h2 className="text-2xl font-bold text-gray-900">No Items Found</h2>
-                        <p className="text-gray-500 mt-2">We couldn't find any products in the {category} category.</p>
+                        <h2 className="text-2xl font-bold text-gray-900">Aucun article trouvé</h2>
+                        <p className="text-gray-500 mt-2">Nous n'avons trouvé aucun produit dans la catégorie {category}.</p>
                         <Link href="/" className="mt-6 inline-block bg-blue-700 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-800 transition">
-                            Back to Home
+                            Retour à l'accueil
                         </Link>
                     </div>
                 )}

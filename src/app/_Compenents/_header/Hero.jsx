@@ -1,6 +1,7 @@
 import { client } from "@/lib/sanity";
 import Image from "next/image";
 import Link from "next/link";
+import HeroTitle from "@/app/_framerMotion/HeroTitle";
 
 const getHeroImage = async () => {
   const query = ` *[_type == "heroImage"][0]{
@@ -20,16 +21,10 @@ async function Hero() {
         {/* ## TITLE && P */}
         <div className="mb-6 flex flex-col w-full   lg:w-2/4 mx-4 pt-10 lg:pt-30">
         {/* ## title */}
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-5  text-gray-800">
-            Top Fashion <span className="text-purple-700 text-5xl lg:text-6xl ml-0 lg:ml-4">for a top Price!</span>
-          </h1>
+         <HeroTitle/>
           {/* ## description */}
-          <p className="max-w-md text-md md:text-lg text-gray-700 leading-relaxed ">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus
-            animi quidem repudiandae a magnam sit fugiat repellendus vitae,
-            ipsum dicta natus odio quae architecto autem consequatur? Et cumque
-            mollitia facilis.
-          </p>
+          
+         
          
         </div>
           {/* ## Images */}
@@ -41,7 +36,7 @@ async function Hero() {
               width={500}
               height={500}
               priority
-              alt="Fashion 1"
+              alt="Mode 1"
               className="rounded-lg object-contain object-center"
             />
           </div>
@@ -52,34 +47,34 @@ async function Hero() {
               width={500}
               height={500}
               priority
-              alt="Fashion 2"
+              alt="Mode 2"
               className="rounded-lg object-contain object-center"
             />
           </div>
         </div>
        
       </div>
-       {/* ## links Category*/}
+        {/* ## links Category*/}
       
 <div className="flex flex-col lg:flex-row items-center gap-4 mt-8 lg:mt-0 ml-0 lg:ml-6">
   <div className="flex w-full md:w-auto overflow-hidden rounded-lg border border-gray-400 bg-white shadow-sm">
     <Link 
-      href="/Men" 
+      href="/Homme" 
       className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 border-r border-gray-400"
     >
-      Men
+      Hommes
     </Link>
     <Link 
-      href="/Women" 
+      href="/Femme" 
       className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 border-r border-gray-400"
     >
-      Women
+      Femmes
     </Link>
     <Link 
-      href="/Teens" 
+      href="/Ados" 
       className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6"
     >
-      Teens
+      Ados
     </Link>
   </div>
 </div>

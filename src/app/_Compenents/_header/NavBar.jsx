@@ -9,28 +9,29 @@ import { IoSearchOutline } from "react-icons/io5";
 import SearchProducts from "../SearchProduct";
 
 const links = [
-  { id: 1, name: "Men", href: "/Men" },
-  { id: 2, name: "Women", href: "/women" },
-  { id: 3, name: "Teens", href: "/Teens" },
+  { id: 1, name: "Hommes", href: "/Homme" },
+  { id: 2, name: "Femmes", href: "/Femme" },
+  { id: 3, name: "Ados", href: "/Ados" },
+  
 ];
 
 function NavBar() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false); // Mobile Nav State
-  const [showCart, setShowCart] = useState(false); // Cart Sidebar State
-  const [showSearch, setShowSearch] = useState(false); // حالة البحث
+  const [open, setOpen] = useState(false); 
+  const [showCart, setShowCart] = useState(false); 
+  const [showSearch, setShowSearch] = useState(false); 
   const cart = useStore((state) => state.cart);
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true) }, []);
 
   return (
-    <header className="border-b border-gray-300 bg-white sticky top-0 z-50">
+    <header className="border-b border-gray-300 bg-white sticky top-0 z-[100]">
       <nav className="flex justify-between items-center mx-6 md:mx-12 lg:mx-16 py-3">
         
         {/* --- Logo --- */}
         <Link href={'/'} className="text-3xl font-extrabold shrink-0">
-          MY<span className="font-bold text-blue-700">Store</span>
+          Vantix.
         </Link>
 
         {/* --- Desktop Navigation --- */}
@@ -40,7 +41,15 @@ function NavBar() {
               href={"/"} 
               className={`${pathname === "/" ? "border-b-2 pb-2 border-purple-800 " : "text-gray-700"} font-semibold hover:text-violet-800 transition duration-300`}
             >
-              Home
+              Accueil
+            </Link>
+          </li>
+            <li>
+            <Link 
+              href={"/allproducts"} 
+              className={`${pathname === "/allproducts" ? "border-b-2 pb-2 border-purple-800 " : "text-gray-700"} font-semibold hover:text-violet-800 transition duration-300`}
+            >
+              Products
             </Link>
           </li>
           {links.map((link) => (
@@ -68,16 +77,28 @@ function NavBar() {
             </span>
           </button>
 
-          {/* زر القائمة للهاتف - رفعت الـ z-index ليظهر فوق القائمة عند فتحها */}
-          <button className="md:hidden text-3xl z-[110]" onClick={() => setOpen(!open)}>
+          <button 
+            className={`md:hidden text-3xl transition-all ${showCart ? "z-[40]" : "z-[150]"}`} 
+            onClick={() => setOpen(!open)}
+          >
             {open ? <RiCloseLine /> : <RiMenu3Line />}
           </button>
         </div>
       </nav>
 
-      {/* --- Mobile Sidebar Menu (تخرج من اليمين) --- */}
-      <div className={`fixed inset-y-0 right-0 w-64 bg-white z-[100] shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden flex flex-col p-8 pt-20 gap-6 text-xl font-bold ${open ? "translate-x-0" : "translate-x-full"}`}>
-          <Link href="/" onClick={() => setOpen(false)} className={pathname === "/" ? "border-b-2 pb-2 border-purple-800 w-fit" : ""}>Home</Link>
+      {/* --- Backdrop --- */}
+      {(open || showCart) && (
+        <div 
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[110]"
+          onClick={() => { setOpen(false); setShowCart(false); }}
+        />
+      )}
+
+      {/* --- Mobile Sidebar Menu --- */}
+      <div className={`fixed inset-y-0 right-0 w-64 bg-white z-[120] shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden flex flex-col p-8 pt-20 gap-6 text-xl font-bold ${open ? "translate-x-0" : "translate-x-full"}`}>
+          <Link href="/" onClick={() => setOpen(false)} className={pathname === "/" ? "border-b-2 pb-2 border-purple-800 w-fit" : ""}>Accueil</Link>
+                    <Link href="/allproducts" onClick={() => setOpen(false)} className={pathname === "/allproducts" ? "border-b-2 pb-2 border-purple-800 w-fit" : ""}>Products</Link>
+
           {links.map((link) => (
             <Link 
               key={link.id} 
@@ -94,10 +115,10 @@ function NavBar() {
       {showSearch && <SearchProducts closMenu={() => setShowSearch(false)} />}
 
       {/* --- Cart Sidebar --- */}
-      <div className={`fixed inset-y-0 right-0 z-[100] w-full max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-in-out ${showCart ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed inset-y-0 right-0 z-[130] w-full max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-in-out ${showCart ? "translate-x-0" : "translate-x-full"}`}>
         <div className="flex flex-col h-full">
           <div className="p-5 border-b flex justify-between items-center bg-gray-50">
-            <h2 className="text-xl font-bold">Shopping Cart</h2>
+            <h2 className="text-xl font-bold">Panier</h2>
             <button onClick={() => setShowCart(false)} className="p-2 hover:bg-gray-200 rounded-full transition">
               <RiCloseLine size={28} />
             </button>
@@ -107,14 +128,6 @@ function NavBar() {
           </div>
         </div>
       </div>
-
-      {/* --- Backdrop (الخلفية المظلمة) --- */}
-      {(open || showCart) && (
-        <div 
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[80]"
-          onClick={() => { setOpen(false); setShowCart(false); }}
-        />
-      )}
     </header>
   );
 }

@@ -18,6 +18,7 @@ function GaleryImage({ img }) {
                 src={image}
                 width={100}
                 height={100}
+                alt="image product"
                 className="object-cover object-center cursor-pointer "
                 onClick={() => handelBigImage(image)}
               />
@@ -30,6 +31,7 @@ function GaleryImage({ img }) {
             width={500}
             height={500}
             quality={100}
+            alt="image product"
             className="object-cover object-center"
           />
         </div>
