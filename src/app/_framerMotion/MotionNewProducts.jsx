@@ -46,7 +46,7 @@ function MotionNewProducts({ data }) {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
       >
         {data && data.length > 0 ? (
           data.map((item,index) => (
@@ -60,7 +60,7 @@ function MotionNewProducts({ data }) {
                    initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 ,delay:0.8}}
+          transition={{ duration: 0.5 ,delay:0.5}}
                 className="relative flex items-center justify-center bg-gray-100 overflow-hidden">
                   <Image
   src={item?.imageUrl}

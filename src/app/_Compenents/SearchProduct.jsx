@@ -80,11 +80,13 @@ function SearchProducts({ closMenu }) {
                   className="flex items-center gap-4 p-3 border border-transparent hover:border hover:border-purple-300 rounded-xl transition-all  group"
                 >
                   {/* ## PRODUCT IMAGE CONTAINER */}
-                  <div className="relative bg-gray-50 rounded-lg w-16 h-16 flex-shrink-0 overflow-hidden">
+                  <div className="relative flex items-center justify-center bg-gray-50 rounded-lg w-16 h-16 flex-shrink-0 overflow-hidden">
                     <Image
                       alt={item?.name || "Product"}
                       src={item?.imageUrl}
-                      fill
+                    width={100}
+                    height={100}
+                      style={{ width: '100%', height: 'auto' }} 
                       className="object-contain group-hover:scale-110 transition-transform"
                     />
                   </div>

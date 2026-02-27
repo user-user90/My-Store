@@ -68,15 +68,16 @@ async function AllProducts() {
                     <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">
                       {product.categoryName}
                     </p>
-                    <h3 className="text-lg font-bold text-gray-900 line-clamp-1">
+                       <div className="flex flex-col">
+                      <h3 className="text-lg font-bold text-gray-900 line-clamp-1">
                       <Link href={`/product/${product.slug}`}>
-                        {product.name}
+                        {product?.name}
                       </Link>
                     </h3>
+                    <span className="text-xl font-black text-gray-900">{product?.price} €</span>
                   </div>
-                  <div className="flex flex-col items-end">
-                    <span className="text-xl font-black text-gray-900">{product.price} €</span>
                   </div>
+             
                 </div>
                 
                 {/* View Detail Link (Desktop Only Hint) */}

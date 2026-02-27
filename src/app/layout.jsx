@@ -7,11 +7,13 @@ import { Toaster } from "react-hot-toast";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: 'swap', // يسرع ظهور النص فوراً
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap', // يسرع ظهور النص فوراً
 });
 
 export const metadata = {
@@ -19,21 +21,24 @@ export const metadata = {
   description: "Découvrez Vantix, votre destination ultime pour les dernières tendances en sneakers et streetwear. Qualité premium, icônes intemporelles et style urbain redéfini.",
   keywords: ["Sneakers", "Streetwear", "Mode", "Vantix", "Baskets", "Nike Air Force 1", "Windrunner"],
   icons: {
-    icon: "/teens3.jpeg", // سيقوم Next.js بالبحث عن هذا الملف في مجلد public
+    icon: "/teens3.jpeg", 
   }
-
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    // تم تغيير اللغة للفرنسية لتحسين الـ SEO
+    <html lang="fr"> 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="bg-[#FAFAFA]">
+        <main className="bg-[#FAFAFA] min-h-screen flex flex-col">
           <NavBar />
-          {children}
-            <Toaster position="top-center"  />
+          {/* تأكد أن محتوى الصفحة يأخذ المساحة المتبقية */}
+          <div className="flex-grow">
+            {children}
+          </div>
+          <Toaster position="top-center" />
           <Footer />
         </main>
       </body>

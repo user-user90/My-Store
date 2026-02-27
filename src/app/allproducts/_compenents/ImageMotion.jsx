@@ -9,7 +9,7 @@ function ImageMotion({product}) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8 , delay: 0.6 }}
+      transition={{ duration: 0.6 , delay: 0.6 }}
     >
       <Image
         src={product.imageUrl}
