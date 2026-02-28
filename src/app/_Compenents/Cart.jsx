@@ -69,12 +69,17 @@ function CartPage({ closeCart }) {
                   href={`/product/${item?.slug}`} 
                   className="flex items-center gap-2 flex-1"
                 >
-                  <div className="relative w-20 h-24 bg-gray-100 rounded-lg overflow-hidden shrink-0">
+                  <div className="relative flex items-center justify-center w-20 h-20 bg-gray-100 rounded-lg overflow-hidden shrink-0">
                     <Image
                       src={item?.imageUrl[0]}
                       alt={item?.name}
-                      fill
-                      className="object-contain p-2"
+                      width={50}
+                      height={50}
+                      priority={true}
+                      fetchPriority="high"
+                       sizes="(max-width: 768px) 100vw, 500px"
+                      className=" object-contain p-2"
+
                     />
                   </div>
                   <div className="flex flex-col">
