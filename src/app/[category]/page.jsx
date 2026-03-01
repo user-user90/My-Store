@@ -79,7 +79,7 @@ if (!data || data.length === 0) return notFound();
 
               {/* Info Section */}
               <div className="mt-5 space-y-1">
-                <div className="flex justify-between items-start">
+                <div className="flex flex-col items-start">
                   <h3 className="text-sm font-bold text-gray-800 uppercase tracking-tight truncate max-w-[70%]">
                     <Link href={`/product/${item.slug}`}>{item.name}</Link>
                   </h3>

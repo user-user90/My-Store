@@ -28,7 +28,7 @@ async function Hero() {
          
         </div>
           {/* ## Images */}
-        <div className="flex w-full lg:w-3/5 justify-center lg:justify-end pr-4 mb-16 md:mb-0 ">
+        <div className="flex  w-full lg:w-3/5 justify-center lg:justify-end pr-4 mb-16 md:mb-0 ">
         {/* ## image 1 */}
           <div className="relative top-12 left-12 -ml-12 z-10">
             <Image
@@ -37,6 +37,7 @@ async function Hero() {
               height={500}
               priority
               alt="Mode 1"
+              style={{ objectFit: "contain" }}
               className="rounded-lg object-contain object-center"
             />
           </div>
@@ -46,8 +47,9 @@ async function Hero() {
               src={data?.imgUrl2}
               width={500}
               height={500}
-              priority
+              
               alt="Mode 2"
+              loading="lazy"
               className="rounded-lg object-contain object-center"
             />
           </div>

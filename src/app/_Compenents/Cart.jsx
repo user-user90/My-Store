@@ -105,7 +105,7 @@ function CartPage({ closeCart }) {
 
                       <button
                         onClick={() => decreaseQuantity(item._id)}
-                        className="text-3xl  cursor-pointer text-gray-700 -mt-2"
+                        className="text-3xl  cursor-pointer text-gray-700 -mt-1"
                       >
                         -
                       </button>

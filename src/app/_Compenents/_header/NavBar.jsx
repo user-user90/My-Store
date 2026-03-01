@@ -102,7 +102,7 @@ function NavBar() {
       {/* --- Mobile Sidebar Menu --- */}
       <div className={`fixed inset-y-0 right-0 w-64 bg-white z-[120] shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden flex flex-col p-8 pt-20 gap-6 text-xl font-bold ${open ? "translate-x-0" : "translate-x-full"}`}>
           <Link href="/" onClick={() => setOpen(false)} className={pathname === "/" ? "border-b-2 pb-2 border-purple-800 w-fit" : ""}>Accueil</Link>
-                    <Link href="/allproducts" onClick={() => setOpen(false)} className={pathname === "/allproducts" ? "border-b-2 pb-2 border-purple-800 w-fit" : ""}>Products</Link>
+                    <Link href="/allproducts" onClick={() => setOpen(false)} className={pathname === "/allproducts" ? "border-b-2 pb-2 border-purple-800 w-fit" : ""}>Collection</Link>
 
           {links.map((link) => (
             <Link 
