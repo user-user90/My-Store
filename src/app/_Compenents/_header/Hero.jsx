@@ -57,22 +57,22 @@ async function Hero() {
         {/* ## links Category*/}
       
 <div className="flex flex-col lg:flex-row items-center gap-4 mt-8 lg:mt-0 ml-0 lg:ml-6">
-  <div className="flex w-full md:w-auto overflow-hidden rounded-lg border border-gray-400 bg-white shadow-sm">
+  <div className="flex w-full md:w-auto overflow-hidden rounded-lg border border-gray-400 bg-white shadow-xl">
     <Link 
       href="/Homme" 
-      className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 border-r border-gray-400"
+      className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 bg-yellow-400 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 border-r border-gray-700"
     >
       Hommes
     </Link>
     <Link 
       href="/Femme" 
-      className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 border-r border-gray-400"
+      className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 bg-yellow-400 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 border-r border-gray-700"
     >
       Femmes
     </Link>
     <Link 
       href="/Ados" 
-      className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 hover:bg-gray-100 active:bg-gray-200 py-2 px-6"
+      className="flex w-1/3 items-center text-sm lg:text-lg justify-center text-gray-700 transition duration-100 bg-yellow-400 hover:bg-gray-100 active:bg-gray-200 py-2 px-6 "
     >
       Ados
     </Link>

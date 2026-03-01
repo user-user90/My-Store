@@ -18,7 +18,7 @@ function OrdersPage() {
 
   useEffect(() => { setIsClient(true) }, [])
 
-  const totalPrice = cart?.reduce((acc, item) => acc + item.price, 0)
+  const totalPrice = cart?.reduce((acc, item) => acc + item.price*item.quantity, 0)
 
   const handleFinalSubmit = async (e) => {
     e.preventDefault()

@@ -31,7 +31,7 @@ function NavBar() {
         
         {/* --- Logo --- */}
         <Link href={'/'} className="text-3xl font-extrabold shrink-0">
-          Vantix.
+          Vantix
         </Link>
 
         {/* --- Desktop Navigation --- */}
@@ -49,7 +49,7 @@ function NavBar() {
               href={"/allproducts"} 
               className={`${pathname === "/allproducts" ? "border-b-2 pb-2 border-purple-800 " : "text-gray-700"} font-semibold hover:text-violet-800 transition duration-300`}
             >
-              Products
+              Collection
             </Link>
           </li>
           {links.map((link) => (

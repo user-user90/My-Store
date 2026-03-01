@@ -8,8 +8,7 @@ function ImageMotion({product}) {
       className='flex items-center justify-center' // تأكد من توسيط الصورة داخل الحاوية
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 , delay: 0.6 }}
+      transition={{ duration: 0.2 , delay: 0.2 }}
     >
       <Image
         src={product.imageUrl}

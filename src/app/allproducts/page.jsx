@@ -70,6 +70,7 @@ async function AllProducts() {
                     <RiArrowRightUpLine size={24} className="text-blue-700" />
                   </Link>
                 </div>
+                
               </div>
 
               {/* Product Content */}

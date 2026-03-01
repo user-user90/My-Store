@@ -18,7 +18,7 @@ function Footer() {
           
           {/* Logo Section */}
           <Link href="/" className="text-2xl font-bold text-gray-900">
-           Vantix. 
+           Vantix
           </Link>
 
           {/* Links Section */}
