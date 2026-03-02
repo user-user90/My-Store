@@ -58,7 +58,7 @@ function SearchProducts({ closMenu }) {
             type="text"
             autoFocus
             value={searchProduct}
-            placeholder="Search for products..."
+            placeholder="Rechercher des produits..."
             className="w-full pl-12 pr-4 py-2 bg-gray-50 rounded-lg outline-none focus:ring-1 focus:ring-purple-600 transition-all text-gray-700"
             onChange={(e) => searchProductItem(e.target.value)}
           />
