@@ -24,6 +24,9 @@ export const metadata = {
   icons: {
     icon: "/teens3.jpeg", 
   },
+  verification: {
+    google: "L5HNVxGL1rxh8pGfMeWhp_SiwTRtHzGfRmEU6AR-LSg",
+  },
   alternates: {
     canonical: 'https://vantix-store.netlify.app',
   },
