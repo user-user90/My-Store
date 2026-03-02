@@ -28,7 +28,7 @@ export const metadata = {
     google: "L5HNVxGL1rxh8pGfMeWhp_SiwTRtHzGfRmEU6AR-LSg",
   },
   alternates: {
-    canonical: 'https://vantix-store.netlify.app',
+    canonical: 'https://vantix-store.vercel.app',
   },
 };
 
