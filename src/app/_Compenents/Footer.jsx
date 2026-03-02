@@ -46,7 +46,7 @@ function Footer() {
       <div className="bg-gray-900 py-4">
         <div className="mx-auto max-w-7xl px-4 flex flex-col md:flex-row justify-center items-center gap-2">
           <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} <span className="text-white font-semibold">STORE-DEMO</span>. Tous droits réservés.
+            © {new Date().getFullYear()} <span className="text-white font-semibold">Vantix</span>. Tous droits réservés.
           </p>
         </div>
       </div>

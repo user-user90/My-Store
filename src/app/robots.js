@@ -3,7 +3,8 @@ export default function robots() {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: '/studio', // يمنع جوجل من أرشفة لوحة تحكم سانيتي
     },
-    sitemap: 'https://vantix.com/sitemap.xml',
+    sitemap: 'https://vantix-store.vercel.app/sitemap.xml',
   }
 }
