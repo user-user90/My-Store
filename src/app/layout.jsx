@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  // إضافة metadataBase ضرورية لعمل الروابط الفرعية بشكل صحيح
+  metadataBase: new URL('https://vantix-store.vercel.app'),
+  
   title: "Vantix | L'Élégance du Streetwear & Sneakers Premium",
   description: "Découvrez Vantix, votre destination ultime pour les dernières tendances en sneakers et streetwear.",
   keywords: ["Sneakers", "Streetwear", "Mode", "Vantix", "Baskets", "Nike Air Force 1"],
@@ -28,10 +31,11 @@ export const metadata = {
     google: "L5HNVxGL1rxh8pGfMeWhp_SiwTRtHzGfRmEU6AR-LSg",
   },
   alternates: {
-    canonical: 'https://vantix-store.vercel.app',
+    canonical: '/', // سيستخدم التلقائي بناءً على الـ metadataBase
   },
+  // إضافة رابط السايت ماب برمجياً
+  sitemap: '/sitemap.xml',
 };
-
 export default function RootLayout({ children }) {
   return (
     // إضافة suppressHydrationWarning هنا لحل مشكلة cz-shortcut-listen والإضافات

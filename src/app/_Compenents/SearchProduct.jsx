@@ -71,8 +71,7 @@ function SearchProducts({ closMenu }) {
               filterProduct.map((item) => (
                 /* ## PRODUCT CARD LINK */
                 <Link
-                  href={`/product/${item.slug}`} // تم التعديل ليتناسب مع مسار سانيتي
-                  key={item._id}
+                  href={`/product/${item.slug}`} 
                   onClick={() => {
                     searchProductItem(""); 
                     if (closMenu) closMenu(); 

@@ -13,33 +13,37 @@ export async function createOrder(orderData) {
   try {
     const result = await writeClient.create({
       _type: "order",
-      userName: orderData.userName, // تأكد أنها تطابق السكيمة
-      phone: orderData.phone,       // تأكد أنها تطابق السكيمة
+      userName: orderData.userName,
+      phone: orderData.phone,
       totalPrice: Number(orderData.total),
-      status: "Processing",
+      status: "pending", // لتطابق القائمة التي وضعناها بالفرنسية
       items: orderData.items.map((item) => {
+        // 1. بناء الكائن الأساسي للعنصر
         const itemObject = {
           _key: Math.random().toString(36).substring(2, 9),
+          _type: 'item', // ضروري جداً ليتعرف Sanity على نوع الكائن داخل المصفوفة
           name: item.name,
           price: Number(item.price),
         };
 
-        // إرسال الصورة فقط إذا كانت موجودة
+        // 2. إرسال الصورة (التعديل هنا)
+        // تأكد أن item.image يحتوي على الـ asset._ref من الـ Frontend
         if (item.image?.asset?._ref) {
           itemObject.productImage = {
             _type: 'image',
             asset: {
               _type: "reference",
-              _ref: item.image.asset._ref
+              _ref: item.image.asset._ref // هذا هو الرابط الفعلي للصورة المخزنة في Sanity
             }
           };
         }
+        
         return itemObject;
       }),
     });
     return { success: true };
   } catch (error) {
-    console.error("Sanity Error:", error);
+    console.error("Sanity Error Details:", error);
     return { success: false, error: error.message };
   }
 }
