@@ -3,6 +3,8 @@ import "./globals.css";
 import NavBar from "./_Compenents/_header/NavBar";
 import Footer from "./_Compenents/Footer";
 import { Toaster } from "react-hot-toast";
+import WhatsAppButton from "./_Compenents/Whatsap";
+import Preloader from "./_Compenents/Preloader";
 
 // إعداد الخطوط بشكل يمنع تحميل اللغات غير المستخدمة (حل مشكلة Preload not used)
 const geistSans = Geist({
@@ -51,12 +53,14 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
       >
         <div className="bg-[#FAFAFA] min-h-screen flex flex-col">
+         <Preloader />
           <NavBar />
           {/* الـ main هنا مهم للـ SEO والـ Accessibility */}
           <main className="flex-grow">
             {children}
           </main>
           <Toaster position="top-center" />
+          <WhatsAppButton />
           <Footer />
         </div>
       </body>
