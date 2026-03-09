@@ -20,7 +20,7 @@ function Footer() {
       <div className="border-b border-gray-100 py-6 bg-[#F9F9F9]">
         <div className="mx-auto max-w-7xl px-4 flex flex-wrap justify-center md:justify-around gap-8 text-center">
           <div className="flex items-center gap-3">
-            <RiTruckLine size={24} className="text-black" />
+            <RiTruckLine size={24} className="text-blue-600" />
             <span className="text-[11px] font-bold uppercase tracking-widest">Livraison Partout au Maroc</span>
           </div>
           <div className="flex items-center gap-3">
@@ -28,7 +28,7 @@ function Footer() {
             <span className="text-[11px] font-bold uppercase tracking-widest">Paiement à la Livraison</span>
           </div>
           <div className="flex items-center gap-3">
-            <RiShieldCheckLine size={24} className="text-black" />
+            <RiShieldCheckLine size={24} className="text-green-600" />
             <span className="text-[11px] font-bold uppercase tracking-widest">Produits Authentiques</span>
           </div>
         </div>
@@ -43,21 +43,21 @@ function Footer() {
               Vantix
             </Link>
             <div className="flex gap-3">
-              <a href="#" className="p-2.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
+              <Link href="/" className="p-2.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
                 <FaInstagram size={18} />
-              </a>
-              <a href="#" className="p-2.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
+              </Link>
+              <Link href="#" className="p-2.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
                 <FaFacebookF size={18} />
-              </a>
-              <a href="#" className="p-2.5 bg-[#25D366] text-white rounded-full hover:scale-110 transition-transform">
+              </Link>
+              <Link href="#" className="p-2.5 bg-[#25D366] text-white rounded-full hover:scale-110 transition-transform">
                 <FaWhatsapp size={18} />
-              </a>
+              </Link>
             </div>
           </div>
 
           {/* Navigation */}
           <div className="flex flex-col items-center gap-6">
-             <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400">Menu</h4>
+             <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-700">Menu</h4>
              <ul className="flex flex-wrap justify-center gap-8">
               <li>
                 <button onClick={scrollToTop} className="text-xs font-bold text-black hover:text-gray-500 transition uppercase">
@@ -76,12 +76,10 @@ function Footer() {
 
           {/* New Payment Concept: Cash On Delivery */}
           <div className="flex flex-col items-center lg:items-end gap-3">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 text-center lg:text-right">Mode de règlement</h4>
             <div className="flex items-center gap-2 border-2 border-black px-4 py-2 rounded-sm">
                <FaHandHoldingUsd size={20} className="text-black" />
-               <span className="text-xs font-black uppercase tracking-tight">Paiement Cash à la livraison</span>
+               <span className="text-xs font-black uppercase tracking-tight">Paiement  à la livraison</span>
             </div>
-            <p className="text-[10px] text-gray-400 font-medium">Payez seulement quand vous recevez</p>
           </div>
 
         </div>

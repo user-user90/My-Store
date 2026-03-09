@@ -43,7 +43,7 @@ const cardVariants = {
 
 export default function Features() {
   return (
-    <section className="py-20 bg-transparent ">
+    <section className="pt-20 bg-transparent ">
       <div className="max-w-7xl mx-auto px-5">
         <motion.div
           variants={containerVariants}
@@ -76,7 +76,7 @@ export default function Features() {
                 {feature.title}
               </h3>
               
-              <p className="text-gray-500 text-sm leading-relaxed max-w-[250px]">
+              <p className="text-gray-700 text-sm leading-relaxed max-w-[250px]">
                 {feature.description}
               </p>
             </motion.div>
