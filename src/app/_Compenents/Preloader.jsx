@@ -6,21 +6,39 @@ export default function Preloader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // سيختفي الأنميشن بعد 2.5 ثانية
+    // Performances: التأكد من تنظيف الذاكرة وتحديد وقت منطقي لا يؤثر على TBT
     const timer = setTimeout(() => setLoading(false), 2500);
-    return () => clearTimeout(timer);
-  }, []);
+    
+    // منع التمرير (Scrolling) أثناء التحميل لتحسين CLS والوصول
+    if (loading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = "unset";
+    };
+  }, [loading]);
 
   return (
     <AnimatePresence>
       {loading && (
         <motion.div
+          // Accessibilité: تعريف العنصر كـ "حالة تحميل" لقارئات الشاشة
+          role="status"
+          aria-live="polite"
+          aria-busy="true"
+          aria-label="Chargement de Vantix"
+          
           initial={{ opacity: 1 }}
           exit={{ 
             y: "-100%", 
             transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } 
           }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black text-white"
+          // Performances: 'will-change-transform' تسرع المعالجة عبر كارت الشاشة (GPU)
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black text-white will-change-transform touch-none"
         >
           <div className="overflow-hidden">
             <motion.h1
@@ -32,10 +50,10 @@ export default function Preloader() {
               Vantix<span className="text-gray-500">.</span>
             </motion.h1>
             
-            {/* خط تحميل سفلي */}
             <motion.div 
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
+              // Performances: استخدام transform (scaleX) بدلاً من width لتحسين الأداء (Composite Layers)
+              initial={{ scaleX: 0, originX: 0 }}
+              animate={{ scaleX: 1 }}
               transition={{ duration: 1.5, delay: 0.5 }}
               className="h-[2px] bg-white mt-2"
             />
@@ -44,4 +62,4 @@ export default function Preloader() {
       )}
     </AnimatePresence>
   );
-} 
+}
