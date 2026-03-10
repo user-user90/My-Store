@@ -2,6 +2,9 @@ import { client } from "@/lib/sanity"
 import GaleryImage from "../_compenents/GaleryImage";
 import AddCart from "../_compenents/AddCart";
 
+
+
+export const revalidate = 60;
 const getData = async (slug)=>{
 const query = `*[_type == "product" && slug.current == $slug][0]{
   _id,
@@ -18,11 +21,12 @@ const query = `*[_type == "product" && slug.current == $slug][0]{
   description,
   "categoryName": category->name
 }`;
-const data = await client.fetch(query,{slug})
+
+const data = await client.fetch(query, {}, { next: { revalidate: 60 } });
+
 return data
 
 }
-
 async function ProductPage({params}) {
     const {slug}= await params
     const data = await getData(slug)
@@ -32,7 +36,7 @@ async function ProductPage({params}) {
         <div className="bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mx-4 md:px-8 lg:px-16 gap-10">
         {/* ## image */}
         <div>
-         <GaleryImage img={data.imageUrl} />
+         <GaleryImage img={data?.imageUrl} />
         </div>
         {/* ## info title && desc && price */}
         <div>
