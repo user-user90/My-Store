@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
           <main className="flex-grow ">
             {children}
           </main>
-          <Toaster position="bottom-right" />
+          <Toaster position="center-right" />
           <WhatsAppButton />
           <Footer />
         </div>
