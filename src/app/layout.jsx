@@ -56,10 +56,10 @@ export default function RootLayout({ children }) {
          <Preloader />
           <NavBar />
           {/* الـ main هنا مهم للـ SEO والـ Accessibility */}
-          <main className="flex-grow">
+          <main className="flex-grow ">
             {children}
           </main>
-          <Toaster position="top-right" />
+          <Toaster position="bottom-right" />
           <WhatsAppButton />
           <Footer />
         </div>
