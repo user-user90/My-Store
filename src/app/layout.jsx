@@ -4,7 +4,7 @@ import NavBar from "./_Compenents/_header/NavBar";
 import Footer from "./_Compenents/Footer";
 import { Toaster } from "react-hot-toast";
 import WhatsAppButton from "./_Compenents/Whatsap";
-import Preloader from "./_Compenents/Preloader";
+// import Preloader from "./_Compenents/Preloader";
 
 // إعداد الخطوط بشكل يمنع تحميل اللغات غير المستخدمة (حل مشكلة Preload not used)
 const geistSans = Geist({
@@ -27,7 +27,7 @@ export const metadata = {
   description: "Découvrez Vantix, votre destination ultime pour les dernières tendances en sneakers et streetwear.",
   keywords: ["Sneakers", "Streetwear", "Mode", "Vantix", "Baskets", "Nike Air Force 1"],
   icons: {
-    icon: "/teens3.jpeg", 
+    icon: "/t-shirt-1.avif", 
   },
   verification: {
     google: "L5HNVxGL1rxh8pGfMeWhp_SiwTRtHzGfRmEU6AR-LSg",
@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
       >
         <div className="bg-[#FAFAFA] min-h-screen flex flex-col">
-         <Preloader />
+         {/* <Preloader /> */}
           <NavBar />
           {/* الـ main هنا مهم للـ SEO والـ Accessibility */}
           <main className="flex-grow">
