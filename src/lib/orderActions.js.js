@@ -16,24 +16,26 @@ export async function createOrder(orderData) {
       userName: orderData.userName,
       phone: orderData.phone,
       totalPrice: Number(orderData.total),
-      status: "pending", // لتطابق القائمة التي وضعناها بالفرنسية
+      status: "pending", 
       items: orderData.items.map((item) => {
-        // 1. بناء الكائن الأساسي للعنصر
+        // 1. إنشاء كائن العنصر
         const itemObject = {
           _key: Math.random().toString(36).substring(2, 9),
-          _type: 'item', // ضروري جداً ليتعرف Sanity على نوع الكائن داخل المصفوفة
+          _type: 'item', 
           name: item.name,
           price: Number(item.price),
         };
 
-        // 2. إرسال الصورة (التعديل هنا)
-        // تأكد أن item.image يحتوي على الـ asset._ref من الـ Frontend
-        if (item.image?.asset?._ref) {
+        // 2. استخراج الـ Reference بطريقة ذكية
+        // نبحث عنه في item.image.asset._ref أو item.image.asset (حسب طريقة الجلب)
+        const imageRef = item.image?.asset?._ref || item.image?.asset;
+
+        if (imageRef && typeof imageRef === 'string') {
           itemObject.productImage = {
             _type: 'image',
             asset: {
-              _type: "reference",
-              _ref: item.image.asset._ref // هذا هو الرابط الفعلي للصورة المخزنة في Sanity
+              _type: 'reference',
+              _ref: imageRef, // الآن نرسل الكود الفريد للصورة
             }
           };
         }

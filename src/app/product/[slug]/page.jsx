@@ -7,7 +7,13 @@ const query = `*[_type == "product" && slug.current == $slug][0]{
   _id,
   name,
   price,
+  // 1. نترك هذا لعرض الصور في المتصفح (المعرض)
   "imageUrl": media[].asset->url,
+  
+  // 2. هذا هو "المفتاح السحري" لظهور الصور في لوحة التحكم (Sanity Studio)
+  // نحن نجلب أول كائن صورة كامل (Object) من المصفوفة
+  "image": media[0], 
+
   "slug": slug.current,
   description,
   "categoryName": category->name
