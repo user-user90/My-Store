@@ -22,7 +22,7 @@ const query = `*[_type == "product" && slug.current == $slug][0]{
   "categoryName": category->name
 }`;
 
-const data = await client.fetch(query, { slug }, { next: { revalidate: 60 } });
+const data = await client.fetch(query, { slug }, { next: { revalidate: 0 } });
 return data
 
 }
