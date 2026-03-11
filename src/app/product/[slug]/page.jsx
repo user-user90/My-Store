@@ -4,8 +4,7 @@ import AddCart from "../_compenents/AddCart";
 
 
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const fetchCache = 'force-no-store'; // سطر إضافي لضمان عدم التخزينexport const revalidate = 0;
 const getData = async (slug)=>{
 const query = `*[_type == "product" && slug.current == $slug][0]{
   _id,
