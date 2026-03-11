@@ -4,7 +4,7 @@ import AddCart from "../_compenents/AddCart";
 
 
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 const getData = async (slug)=>{
 const query = `*[_type == "product" && slug.current == $slug][0]{
   _id,
@@ -22,7 +22,7 @@ const query = `*[_type == "product" && slug.current == $slug][0]{
   "categoryName": category->name
 }`;
 
-const data = await client.fetch(query, { slug }, { next: { revalidate: 0 } });
+const data = await client.fetch(query, { slug }, { cache: 'no-store' });
 return data
 
 }
