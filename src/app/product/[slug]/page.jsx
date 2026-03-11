@@ -2,9 +2,6 @@ import { client } from "@/lib/sanity"
 import GaleryImage from "../_compenents/GaleryImage";
 import AddCart from "../_compenents/AddCart";
 
-
-
-export const fetchCache = 'force-no-store'; // سطر إضافي لضمان عدم التخزينexport const revalidate = 0;
 const getData = async (slug)=>{
 const query = `*[_type == "product" && slug.current == $slug][0]{
   _id,
@@ -21,10 +18,7 @@ const query = `*[_type == "product" && slug.current == $slug][0]{
   description,
   "categoryName": category->name
 }`;
-const data = await client.fetch(query, { slug }, { 
-  cache: 'no-store', // منع التخزين في Vercel
-  next: { revalidate: 0 } 
-});
+const data = await client.fetch(query,{slug})
 return data
 
 }
