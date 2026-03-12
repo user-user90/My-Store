@@ -47,35 +47,29 @@ function MotionNewProducts({ data }) {
             <div key={item._id || index}>
               <Link
                 href={`/product/${item?.slug}`}
-                className=" shadow-md border border-gray-300 bg-gray-100 hover:shadow-xl transition-all duration-500 hover:border-purple-500 rounded-t-lg block overflow-hidden"
+                className="shadow-md border border-gray-300 bg-gray-100 hover:shadow-xl transition-all duration-500 hover:border-purple-500 rounded-t-lg block overflow-hidden group"
               >
                 {/* IMAGE CONTAINER */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }} // تقليل التأخير لتحسين LCP
-                  className=" flex items-center justify-center bg-gray-100 overflow-hidden"
-                >
+                <div className="flex items-center justify-center bg-gray-100 overflow-hidden relative aspect-square">
                   <Image
                     src={item?.imageUrl}
-                    width={400} // زيادة العرض قليلاً لتفادي فقدان الجودة
-                    height={400}
+                    fill // استخدام fill مع aspect-square أفضل للتجاوب
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw" // تحديد الحجم بدقة للمتصفح
                     alt={item?.name || "Product image"}
-
-                    priority
-                    className="w-[400px] h-[300px] hover:scale-105 object-contain group-hover:scale-110 transition-transform duration-500 py-4"
+                    // التحسين الأهم: تحميل أول صورتين فقط بأولوية (للجوال) والباقي تحميل متأخر
+                    priority={index < 2} 
+                    className="object-contain group-hover:scale-105 transition-transform duration-500 p-4"
                   />
-                </motion.div >
+                </div >
                 
                 {/* INFO CONTAINER */}
                 <div className="flex justify-between items-center py-4 px-6 bg-gray-100">
                   <h3 className="line-clamp-1 font-bold text-gray-800 group-hover:text-purple-700 transition-colors">
                     {item?.name}
                   </h3>
-                  <h4 className="text-sm font-bold text-blue-700 shrink-0 ml-2">
+                  <p className="text-sm font-bold text-blue-700 shrink-0 ml-2">
                     {item?.price} €
-                  </h4>
+                  </p>
                 </div>
               </Link>
             </div>

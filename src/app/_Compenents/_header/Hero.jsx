@@ -2,13 +2,21 @@ import { client } from "@/lib/sanity";
 import Image from "next/image";
 import Link from "next/link";
 import HeroTitle from "@/app/_framerMotion/HeroTitle";
+import imageUrlBuilder from "@sanity/image-url";
+
+// إعداد أداة بناء روابط الصور من Sanity
+const builder = imageUrlBuilder(client);
+function urlFor(source) {
+  return builder.image(source);
+}
 
 const getHeroImage = async () => {
-  const query = ` *[_type == "heroImage"][0]{
-    "imgUrl1":media1.asset->url,
-    "imgUrl2":media2.asset->url
+  const query = `*[_type == "heroImage"][0]{
+    "image1": media1.asset,
+    "image2": media2.asset
   }`;
-  return await client.fetch(query);
+  // استخدام cache لتحسين سرعة استجابة السيرفر
+  return await client.fetch(query, {}, { next: { revalidate: 3600 } });
 };
 
 async function Hero() {
@@ -17,46 +25,50 @@ async function Hero() {
   return (
     <section className="mx-auto max-w-2xl lg:max-w-7xl px-7 pt-8 lg:pt-16">
       <div className="mb-8 flex flex-col lg:flex-row justify-between items-center md:mb-16 gap-8">
-        {/* ## TITLE && P */}
+        
+        {/* العنوان والوصف */}
         <div className="mb-6 flex flex-col w-full lg:w-2/4 mx-4 pt-10 lg:pt-30">
           <HeroTitle />
         </div>
 
-        {/* ## Images Container */}
+        {/* حاوية الصور */}
         <div className="flex w-full lg:w-3/5 justify-center lg:justify-end pr-4 mb-16 md:mb-0">
           
-          {/* ## Image 1 (The LCP Element) */}
+          {/* الصورة الأولى - العنصر الأهم للأداء (LCP) */}
           <div className="relative top-12 left-12 -ml-12 z-10">
-            <Image
-              src={data?.imgUrl1}
-              width={400}
-              height={400}
-              priority={true}
-              fetchPriority="high" // إعطاء أمر للمتصفح بتحميلها أول شيء
-              // التعديل الجوهري: تحديد أحجام دقيقة لمنع تحميل صور ضخمة
-              sizes="(max-width: 768px) 300px, 450px" 
-              alt="Mode Streetwear Homme Vantix"
-              className="rounded-lg object-contain object-center"
-              decoding="sync" // تقليل تأخير العرض (Element Render Delay)
-            />
+            {data?.image1 && (
+              <Image
+                src={urlFor(data.image1).url()}
+                width={450} 
+                height={550}
+                priority={true} // تحميل ذو أولوية
+                fetchPriority="high" // أولوية قصوى للمتصفح
+                decoding="sync" // عرض فوري
+                sizes="(max-width: 768px) 300px, 450px" // أهم تعديل لتقليل الحجم
+                alt="Mode Streetwear Homme Vantix"
+                className="rounded-lg object-contain object-center"
+              />
+            )}
           </div>
 
-          {/* ## Image 2 */}
-          <div>
-            <Image
-              src={data?.imgUrl2}
-              width={400}
-              height={400}
-              priority={true}
-              sizes="(max-width: 768px) 300px, 450px"
-              alt="Mode Streetwear Femme Vantix"
-              className="rounded-lg object-contain object-center"
-            />
+          {/* الصورة الثانية */}
+          <div className="relative">
+            {data?.image2 && (
+              <Image
+                src={urlFor(data.image2).url()}
+                width={450}
+                height={550}
+                priority={true}
+                sizes="(max-width: 768px) 300px, 450px"
+                alt="Mode Streetwear Femme Vantix"
+                className="rounded-lg object-contain object-center"
+              />
+            )}
           </div>
         </div>
       </div>
 
-      {/* ## Links Category - تحسين التباين (Contrast) */}
+      {/* الروابط */}
       <nav aria-label="Catégories principales" className="flex flex-col lg:flex-row items-center gap-4 mt-8 lg:mt-0 ml-0 lg:ml-6">
         <div className="flex w-full md:w-auto overflow-hidden rounded-lg border border-gray-900 bg-white shadow-xl">
           <Link 
