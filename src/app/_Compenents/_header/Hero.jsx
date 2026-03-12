@@ -29,8 +29,8 @@ async function Hero() {
           <div className="relative top-12 left-12 -ml-12 z-10">
             <Image
               src={data?.imgUrl1}
-              width={500}
-              height={500}
+              width={400}
+              height={400}
               priority={true}
               fetchPriority="high" // إعطاء أمر للمتصفح بتحميلها أول شيء
               // التعديل الجوهري: تحديد أحجام دقيقة لمنع تحميل صور ضخمة
@@ -45,8 +45,8 @@ async function Hero() {
           <div>
             <Image
               src={data?.imgUrl2}
-              width={500}
-              height={500}
+              width={400}
+              height={400}
               priority={true}
               sizes="(max-width: 768px) 300px, 450px"
               alt="Mode Streetwear Femme Vantix"
