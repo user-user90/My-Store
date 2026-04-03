@@ -40,7 +40,7 @@ async function ProductPage({params}) {
             {/* ## title */}
             <h2 className="text-3xl lg:text-5xl text-gray-800 font-bold mb-1 mt-10 lg:mt-22">{data?.name}</h2>
             {/* ## Price */}
-            <span className=" text-2xl text-purple-800 font-extrabold">${data?.price}</span>
+            <span className=" text-2xl text-purple-800 font-extrabold">DH{data?.price}</span>
             </div>
             {/* ## description */}
             <p className="leading-relaxed text-gray-600 my-8">{data?.description}</p>

@@ -86,7 +86,7 @@ async function AllProducts() {
                           {product?.name}
                         </Link>
                       </h3>
-                      <span className="text-xl font-black text-gray-900">{product?.price} €</span>
+                      <span className="text-xl font-black text-gray-900">{product?.price} DH</span>
                     </div>
                   </div>
                 </div>

@@ -84,7 +84,7 @@ if (!data || data.length === 0) return notFound();
                     <Link href={`/product/${item.slug}`}>{item.name}</Link>
                   </h3>
                   <span className="text-md font-black text-blue-700">
-                    {item.price} €
+                    {item.price} DH
                   </span>
                 </div>
               </div>

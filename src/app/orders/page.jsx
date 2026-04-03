@@ -83,7 +83,7 @@ function OrdersPage() {
                     <p className="font-bold text-sm line-clamp-1 text-black">{item.name}</p>
                     <p className="text-xs text-gray-500">{item.categoryName}</p>
                   </div>
-                  <p className="font-bold text-blue-600">{item.price} €</p>
+                  <p className="font-bold text-blue-600">{item.price} DH</p>
                 </div>
               ))
             ) : (

@@ -129,7 +129,7 @@ function CartPage({ closeCart }) {
                   >
                     <RiDeleteBin6Line size={20} />
                   </button>
-                  <h3 className="text-blue-700 font-bold">{item?.price} €</h3>
+                  <h3 className="text-blue-700 font-bold">{item?.price} DH</h3>
                 </div>
               </div>
             ))}
@@ -161,7 +161,7 @@ function CartPage({ closeCart }) {
         <div className="p-5 border-t bg-gray-50">
           <div className="flex justify-between items-center mb-4">
             <span className="text-gray-600">Total</span>
-            <span className="text-xl font-extrabold">{totalPrice} €</span>
+            <span className="text-xl font-extrabold">{totalPrice} DH</span>
           </div>
           <button
             aria-label="Commander maintenant"

@@ -68,7 +68,7 @@ function MotionNewProducts({ data }) {
                     {item?.name}
                   </h3>
                   <p className="text-sm font-bold text-blue-700 shrink-0 ml-2">
-                    {item?.price} €
+                    {item?.price} DH
                   </p>
                 </div>
               </Link>
